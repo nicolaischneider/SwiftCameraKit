@@ -1,0 +1,26 @@
+# Swift package manager
+.build/
+Package.resolved
+
+# Xcode
+.idea/
+xcuserdata/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+*.xcworkspace/
+*.xcscheme
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# SwiftPM
+.swiftpm/
+
+# User-specific files
+*.swp
+*.DS_Store
+*.user
+*.userstate
