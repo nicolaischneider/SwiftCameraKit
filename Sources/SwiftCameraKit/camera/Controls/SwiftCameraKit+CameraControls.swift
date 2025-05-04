@@ -12,6 +12,7 @@ import os
 
 extension SwiftCameraKit {
  
+    /* HIDING SIMULATOR FEATURE FOR NOW
     #if targetEnvironment(simulator)
 
     // MARK: - Simulator
@@ -23,7 +24,7 @@ extension SwiftCameraKit {
     // fake switch between video and photo
     func switchCaptureMode(toPhoto: Bool) {}
     
-    #else
+    #else*/
 
     // MARK: - Device
 
@@ -111,7 +112,5 @@ extension SwiftCameraKit {
 
         session.commitConfiguration()
     }
-
-
-    #endif
+   // #endif
 }

@@ -92,11 +92,12 @@ extension SwiftCameraKit {
     
     // MARK: - Simulator Mode
     
+    /* HIDING SIMULATOR FEATURE FOR NOW
     #if targetEnvironment(simulator)
     private func configureCaptureSession() {}
     private func setupCameraLayer() {}
     private func setupAudioSession() -> Bool { true }
-    #else
+    #else*/
     
     // MARK: - Configuring Capture Session
     
@@ -275,5 +276,5 @@ extension SwiftCameraKit {
         
         view.view.layer.insertSublayer(cameraPreviewLayer, at: 0)
     }
-    #endif
+    //#endif
 }

@@ -15,13 +15,15 @@ extension SwiftCameraKit {
     // MARK: - Photo Capture
     
     // Simulator
+    
+    /* HIDING SIMULATOR FEATURE FOR NOW
     #if targetEnvironment(simulator)
     func capturePhoto() {
         self.finalPhoto = UIImage(named: "story-static-img")!
     }
     
     // Real Device
-    #else
+    #else*/
     func capturePhoto() {
         self.isPhotoMode = true
         
@@ -40,5 +42,5 @@ extension SwiftCameraKit {
         
         photoOutput?.capturePhoto(with: settings, delegate: self)
     }
-    #endif
+    //#endif
 }

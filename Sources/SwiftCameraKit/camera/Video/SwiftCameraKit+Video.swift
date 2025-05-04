@@ -14,6 +14,7 @@ extension SwiftCameraKit {
     
     // MARK: - Video Recording
     
+    /* HIDING SIMULATOR FEATURE FOR NOW
     #if targetEnvironment(simulator)
     
     // MARK: Simulator
@@ -25,7 +26,7 @@ extension SwiftCameraKit {
     func stopVideoRecording() {
         isRecordingVideo = false
     }
-    #else
+    #else*/
     
     // MARK: Device
 
@@ -140,5 +141,5 @@ extension SwiftCameraKit {
         recordingTimer?.invalidate()
         recordingTimer = nil
     }
-    #endif
+    // #endif
 }
