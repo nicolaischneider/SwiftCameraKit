@@ -36,7 +36,22 @@ public class SwiftCameraKit: NSObject {
     var cameraSessionStarted = false
     var cameraSessionCommitted = false
         
-    @Published public var state: CameraOutput?
+    @Published private var state: CameraOutput? {
+        didSet {
+            // Clean up previous video file if we're changing from .videoOutput to something else
+            if case .videoOutput(let oldURL) = oldValue {
+                // Only delete if we're changing to a different case or nil
+                switch state {
+                case .videoOutput(let newURL) where newURL == oldURL:
+                    // Same URL, don't delete
+                    break
+                default:
+                    // Different case or nil, safe to delete old file
+                    try? FileManager.default.removeItem(at: oldURL)
+                }
+            }
+        }
+    }
     
     public init(
         view: UIViewController
