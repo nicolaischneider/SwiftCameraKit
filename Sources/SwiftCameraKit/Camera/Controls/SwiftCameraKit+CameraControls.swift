@@ -67,7 +67,7 @@ extension SwiftCameraKit {
         }
         
         guard let session = captureSession, let currentCamera = currentCamera else {
-            // callErrorView()
+            state = .error(.cameraSwitchFailed)
             return
         }
 
@@ -88,7 +88,7 @@ extension SwiftCameraKit {
 
         do {
             guard let newCamera = self.currentCamera else {
-                // callErrorView()
+                state = .error(.cameraSwitchFailed)
                 session.commitConfiguration()
                 return
             }
@@ -104,7 +104,7 @@ extension SwiftCameraKit {
             }
         } catch {
             DispatchQueue.main.async {
-                // self.callErrorView()
+                self.state = .error(.cameraSwitchFailed)
             }
             session.commitConfiguration()
             return

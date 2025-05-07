@@ -24,7 +24,7 @@ extension SwiftCameraKit: AVCaptureFileOutputRecordingDelegate {
         if let error = error {
             LogManager.swiftCameraKit.addLog("Error recording video: \(error.localizedDescription)")
             DispatchQueue.main.async {
-                // self.callErrorView()
+                self.state = .error(.videoOutputFailed)
             }
             return
         }
@@ -35,19 +35,14 @@ extension SwiftCameraKit: AVCaptureFileOutputRecordingDelegate {
     
     private func processRecordedVideo(videoURL: URL) {
         // Store original URL
-        self.originalVideoURL = videoURL
+        self.state = .videoOutput(videoURL)
         
         DispatchQueue.main.async {
             self.stopCaptureSession()
         }
     }
     
-    func setupVideoPlayback(in playerView: UIView) {
-        guard let videoURL = finalVideoURL else {
-            LogManager.swiftCameraKit.addLog("No video URL available for playback")
-            return
-        }
-        
+    func setupVideoPlayback(in playerView: UIView, videoURL: URL) {        
         // Create AVPlayer
         let player = AVPlayer(url: videoURL)
         

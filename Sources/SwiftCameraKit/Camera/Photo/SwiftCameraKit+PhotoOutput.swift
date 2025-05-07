@@ -16,29 +16,27 @@ extension SwiftCameraKit: AVCapturePhotoCaptureDelegate {
     public func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard error == nil else {
             LogManager.swiftCameraKit.addLog("Error in capturing photo: \(error?.localizedDescription ?? "error localization failed")")
-            // self.callErrorView()
+            state = .error(.photoOutputFailed)
             return
         }
 
         // Retrieve the image data
         guard let imageData = photo.fileDataRepresentation() else {
             LogManager.swiftCameraKit.addLog("Could not retrieve the image data")
-            // self.callErrorView()
+            state = .error(.photoWithFalseDataRepresentationCreated)
             return
         }
 
         // Create an UIImage from the data
         guard let capturedImage = UIImage(data: imageData) else {
             LogManager.swiftCameraKit.addLog("Could not create an image from the data")
-            // self.callErrorView()
+            state = .error(.photoWithFalseDataRepresentationCreated)
             return
         }
 
         DispatchQueue.main.async {
             self.stopCaptureSession()
-            self.finalPhoto = capturedImage
-            // update view
-            // self.view.showView(viewType: .review(editedImage))
+            self.state = .photoOutput(capturedImage)
         }
     }
 }

@@ -5,16 +5,6 @@ import Photos
 
 public class SwiftCameraKit: NSObject {
     
-    enum ShareState {
-        case postedWithSuccess
-        case mediaStoredSuccessfully
-        case error(String)
-    }
-    
-    enum StoryError: Error {
-        case cameraPermissionNotGranted
-    }
-    
     var view: UIViewController
     
     // Camera values
@@ -42,17 +32,11 @@ public class SwiftCameraKit: NSObject {
     var maxRecordingDuration: Int = 30 // Max video length in seconds
     var videoPlayer: AVPlayer?
 
-    // For video processing
-    var originalVideoURL: URL?
-    var finalVideoURL: URL?
-    var videoHasWatermark: Bool = true
-    
+    // Camera Session
     var cameraSessionStarted = false
     var cameraSessionCommitted = false
-    
-    var error: StoryError?
-    var errorOccurred: Bool = false
-    var finalPhoto: UIImage?
+        
+    @Published public var state: CameraOutput?
     
     public init(
         view: UIViewController
@@ -77,9 +61,6 @@ public class SwiftCameraKit: NSObject {
     }
     
     func retakeImage() {
-        finalPhoto = nil
-        originalVideoURL = nil
-        finalVideoURL = nil
         cameraPreviewLayer?.connection?.isEnabled = true
         cleanupVideoPlayback()
         DispatchQueue.global(qos: .background).async { [weak self] in

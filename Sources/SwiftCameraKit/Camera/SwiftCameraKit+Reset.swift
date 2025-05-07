@@ -88,18 +88,11 @@ extension SwiftCameraKit {
         // Delete temporary video files
         let fileManager = FileManager.default
         
-        if let originalURL = originalVideoURL, fileManager.fileExists(atPath: originalURL.path) {
-            try? fileManager.removeItem(at: originalURL)
-            originalVideoURL = nil
+        if case .videoOutput(let url) = state {
+            try? fileManager.removeItem(at: url)
         }
         
-        if let finalURL = finalVideoURL, fileManager.fileExists(atPath: finalURL.path) {
-            try? fileManager.removeItem(at: finalURL)
-            finalVideoURL = nil
-        }
-        
-        // Clear photo references to release memory
-        finalPhoto = nil
+        state = nil
     }
 
     // Reset all state variables to their initial values
@@ -115,11 +108,6 @@ extension SwiftCameraKit {
         // Recording state
         isRecordingVideo = false
         isPhotoMode = true
-        videoHasWatermark = true
-        
-        // Flags and statuses
-        errorOccurred = false
-        error = nil
     }
 
     // Remove any notification observers
