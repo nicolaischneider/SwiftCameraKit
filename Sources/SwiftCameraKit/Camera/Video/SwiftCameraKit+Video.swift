@@ -30,7 +30,7 @@ extension SwiftCameraKit {
     
     // MARK: Device
 
-    func startVideoRecording() {
+    public func startVideoRecording() {
         self.isPhotoMode = false
 
         guard let movieFileOutput = movieFileOutput, !movieFileOutput.isRecording else {
@@ -77,7 +77,7 @@ extension SwiftCameraKit {
         startRecordingTimer()
     }
     
-    func stopVideoRecording() {
+    public func stopVideoRecording() {
         guard let movieFileOutput = movieFileOutput, movieFileOutput.isRecording else {
             LogManager.swiftCameraKit.addLog("Cannot stop recording: not currently recording")
             return

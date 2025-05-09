@@ -3,7 +3,7 @@ import Foundation
 extension SwiftCameraKit {
     // Call this function when the controller is no longer needed
     // or when you need to reset the camera state completely
-    func reset() {
+    public func reset() {
         // Stop any ongoing video recording
         breakVideoRecording()
         

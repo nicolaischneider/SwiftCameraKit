@@ -24,7 +24,7 @@ extension SwiftCameraKit {
     
     // Real Device
     #else*/
-    func capturePhoto() {
+    public func capturePhoto() {
         self.isPhotoMode = true
         
         // Immediately pause the preview layer animation

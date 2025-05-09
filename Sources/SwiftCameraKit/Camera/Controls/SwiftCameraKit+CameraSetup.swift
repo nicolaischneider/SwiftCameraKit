@@ -13,13 +13,8 @@ extension SwiftCameraKit {
     
     // MARK: - Camera and Audio Authorization
     
-    func setupSessionAndCamera() {
-        configureCaptureSession()
-        setupCameraLayer()
-    }
-    
     // Add this to your view controller's initialization or viewDidLoad
-    func canSetupCameraAndAudio() async -> Bool{
+    public func canSetupCameraAndAudio() async -> Bool{
         // First set up the audio session
         let audioSessionReady = setupAudioSession()
         if !audioSessionReady {
@@ -100,6 +95,13 @@ extension SwiftCameraKit {
     #else*/
     
     // MARK: - Configuring Capture Session
+    
+    public func setupSessionAndCamera() {
+        DispatchQueue.main.async {
+            self.configureCaptureSession()
+            self.setupCameraLayer()
+        }
+    }
     
     private func configureCaptureSession() {
         

@@ -36,7 +36,7 @@ public class SwiftCameraKit: NSObject {
     var cameraSessionStarted = false
     var cameraSessionCommitted = false
         
-    @Published private var state: CameraOutput? {
+    @Published public var state: CameraOutput? {
         didSet {
             // Clean up previous video file if we're changing from .videoOutput to something else
             if case .videoOutput(let oldURL) = oldValue {
@@ -57,6 +57,8 @@ public class SwiftCameraKit: NSObject {
         view: UIViewController
     ) {
         self.view = view
+        super.init()
+        self.subscribeToObserver()
     }
     
     deinit {
@@ -75,7 +77,7 @@ public class SwiftCameraKit: NSObject {
             name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
-    func retakeImage() {
+    public func restartCaptureSession() {
         cameraPreviewLayer?.connection?.isEnabled = true
         cleanupVideoPlayback()
         DispatchQueue.global(qos: .background).async { [weak self] in
@@ -85,7 +87,7 @@ public class SwiftCameraKit: NSObject {
         }
     }
     
-    func stopCaptureSession() {
+    public func stopCaptureSession() {
         if let session = captureSession, session.isRunning {
             session.stopRunning()
         }

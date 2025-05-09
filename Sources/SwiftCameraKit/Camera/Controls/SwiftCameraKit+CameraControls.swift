@@ -31,7 +31,7 @@ extension SwiftCameraKit {
     // MARK: Camera Controls
 
     // Switch between photo and video mode
-    func switchCaptureMode(toPhoto: Bool) {
+    public func switchCaptureMode(toPhoto: Bool) {
         
         // no need to update the configs if settings are already set
         guard isPhotoMode != toPhoto else {
@@ -53,13 +53,13 @@ extension SwiftCameraKit {
     }
         
     // Turn on/off flash
-    func switchFlash() {
+    public func switchFlash() {
         self.shouldUseFlash.toggle()
         // view.switchFlashButton(isOn: self.shouldUseFlash)
     }
 
     // Switches between back and front camera
-    func switchCamera() {
+    public func switchCamera() {
         
         guard cameraSessionStarted, cameraSessionCommitted else {
             LogManager.swiftCameraKit.addLog("Camera hasn't loaded yet.")
