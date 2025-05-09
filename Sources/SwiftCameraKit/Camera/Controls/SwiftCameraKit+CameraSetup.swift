@@ -6,7 +6,7 @@ extension SwiftCameraKit {
     // MARK: - Camera and Audio Authorization
     
     // Add this to your view controller's initialization or viewDidLoad
-    public func canSetupCameraAndAudio() async -> CaptureSessionState {
+    public func grantAccessForCameraAndAudio() async -> CaptureSessionState {
         // First set up the audio session
         let audioSessionReady = setupAudioSession()
         if !audioSessionReady {
@@ -266,14 +266,14 @@ extension SwiftCameraKit {
         
         cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         cameraPreviewLayer?.videoGravity = .resizeAspectFill
-        cameraPreviewLayer?.frame = view.view.layer.bounds
+        cameraPreviewLayer?.frame = view.layer.bounds
             
         guard let cameraPreviewLayer else {
             LogManager.swiftCameraKit.addLog("Camera Preview Layer is nil. Image couldn't be taken.")
             return
         }
         
-        view.view.layer.insertSublayer(cameraPreviewLayer, at: 0)
+        view.layer.insertSublayer(cameraPreviewLayer, at: 0)
     }
     //#endif
 }

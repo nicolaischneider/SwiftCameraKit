@@ -5,7 +5,7 @@ import Photos
 
 public class SwiftCameraKit: NSObject {
     
-    var view: UIViewController
+    var view: UIView
     
     // Camera values
     var captureSession: AVCaptureSession?
@@ -54,7 +54,7 @@ public class SwiftCameraKit: NSObject {
     }
     
     public init(
-        view: UIViewController
+        view: UIView
     ) {
         self.view = view
         super.init()
