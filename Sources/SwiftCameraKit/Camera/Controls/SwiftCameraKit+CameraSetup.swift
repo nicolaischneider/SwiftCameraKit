@@ -1,11 +1,3 @@
-//
-//  InstagramStoryController+CameraSetup.swift
-//  100Questions
-//
-//  Created by knc on 20.12.23.
-//  Copyright © 2023 Schneider & co. All rights reserved.
-//
-
 import UIKit
 import AVFoundation
 
@@ -14,7 +6,7 @@ extension SwiftCameraKit {
     // MARK: - Camera and Audio Authorization
     
     // Add this to your view controller's initialization or viewDidLoad
-    public func canSetupCameraAndAudio() async -> Bool{
+    public func canSetupCameraAndAudio() async -> CaptureSessionState {
         // First set up the audio session
         let audioSessionReady = setupAudioSession()
         if !audioSessionReady {
@@ -26,16 +18,21 @@ extension SwiftCameraKit {
         let micAuthorized = await requestMicrophoneAccess()
         
         if cameraAuthorized && micAuthorized {
-            return true
+            return .success
         } else {
-            // Handle permission denied case
+            
+            if !cameraAuthorized && !micAuthorized {
+                LogManager.swiftCameraKit.addLog("Camera and Microphone access denied")
+                return .cameraAndMicrophoneNotAuthorized
+            }
+
             if !cameraAuthorized {
                 LogManager.swiftCameraKit.addLog("Camera access denied")
+                return .cameraNotAuthorized
             }
-            if !micAuthorized {
-                LogManager.swiftCameraKit.addLog("Microphone access denied")
-            }
-            return false
+
+            LogManager.swiftCameraKit.addLog("Microphone access denied")
+            return .microphoneNotAuthorized
         }
     }
     

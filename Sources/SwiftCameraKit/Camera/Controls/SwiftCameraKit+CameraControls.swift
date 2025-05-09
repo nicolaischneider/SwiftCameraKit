@@ -1,11 +1,3 @@
-//
-//  SwiftCameraKit+CameraControls.swift
-//  100Questions
-//
-//  Created by knc on 07.04.25.
-//  Copyright © 2025 Schneider & co. All rights reserved.
-//
-
 import UIKit
 import AVFoundation
 import os

@@ -1,11 +1,3 @@
-//
-//  InstagramStory+CapturedPhoto.swift
-//  100Questions
-//
-//  Created by knc on 20.12.23.
-//  Copyright © 2023 Schneider & co. All rights reserved.
-//
-
 import UIKit
 import AVFoundation
 import os
