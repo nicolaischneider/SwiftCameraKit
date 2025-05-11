@@ -36,13 +36,13 @@ class ViewController: UIViewController {
         
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "My Test App"
+        titleLabel.text = "SwiftCameraKit Tester App"
         titleLabel.textColor = .label // Add this to ensure visibility
         titleLabel.font = .systemFont(ofSize: 24, weight: .bold)
         
         let testButton = UIButton(type: .system)
         testButton.translatesAutoresizingMaskIntoConstraints = false
-        testButton.setTitle("Test Package", for: .normal)
+        testButton.setTitle("Open Camera", for: .normal)
         testButton.addTarget(self, action: #selector(testButtonTapped), for: .touchUpInside)
         
         view.addSubview(titleLabel)

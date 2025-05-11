@@ -36,6 +36,14 @@ class CameraHubView: UIViewController {
     // review view
     let reviewView = MediaReviewView()
     
+    // quit button
+    let quitButton = UIButton.viewWithImage(
+        image: UIImage(systemName: "xmark.circle.fill"),
+        tintColor: .black,
+        cornerRadius: nil,
+        shadow: false,
+        function: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -47,50 +55,6 @@ class CameraHubView: UIViewController {
         
         // If camera controller is already set, configure it
         setupCameraIfNeeded()
-    }
-    
-    private func setupCameraIfNeeded() {
-        guard let cameraController = cameraController,
-              isViewLoaded // Make sure view is loaded
-        else {
-            print("Either controller is nil or view isn't loaded yet")
-            return
-        }
-        
-        setupViews()
-        
-        Task {
-            switch await cameraController.grantAccessForCameraAndAudio() {
-            case .success:
-                self.cameraController?.setupSessionAndCamera()
-                showView(viewType: .camera) // Show camera view when ready
-                
-            case .microphoneNotAuthorized:
-                self.cameraController?.setupSessionAndCamera()
-                self.cameraView.isMicEnabled = false
-                showView(viewType: .camera)
-
-            case .cameraNotAuthorized, .cameraAndMicrophoneNotAuthorized:
-                showView(viewType: .error)
-            }
-        }
-        
-        cameraController.$state
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] state in
-                guard let self = self else { return }
-                switch state {
-                case .error:
-                    self.showView(viewType: .error)
-                case .photoOutput(let image):
-                    self.showView(viewType: .review(image))
-                case .videoOutput(let url):
-                    self.showView(viewType: .reviewVideo(url))
-                default:
-                    break
-                }
-            }
-            .store(in: &cancellables)
     }
     
     func showView (viewType: CameraHubViewType) {
@@ -138,6 +102,50 @@ class CameraHubView: UIViewController {
         }
     }
     
+    private func setupCameraIfNeeded() {
+        guard let cameraController = cameraController,
+              isViewLoaded // Make sure view is loaded
+        else {
+            print("Either controller is nil or view isn't loaded yet")
+            return
+        }
+        
+        setupViews()
+        
+        Task {
+            switch await cameraController.grantAccessForCameraAndAudio() {
+            case .success:
+                self.cameraController?.setupSessionAndCamera()
+                showView(viewType: .camera) // Show camera view when ready
+                
+            case .microphoneNotAuthorized:
+                self.cameraController?.setupSessionAndCamera()
+                self.cameraView.isMicEnabled = false
+                showView(viewType: .camera)
+
+            case .cameraNotAuthorized, .cameraAndMicrophoneNotAuthorized:
+                showView(viewType: .error)
+            }
+        }
+        
+        cameraController.$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .error:
+                    self.showView(viewType: .error)
+                case .photoOutput(let image):
+                    self.showView(viewType: .review(image))
+                case .videoOutput(let url):
+                    self.showView(viewType: .reviewVideo(url))
+                default:
+                    break
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
     private func setupViews() {
         
         guard let cameraController else {
@@ -146,8 +154,8 @@ class CameraHubView: UIViewController {
         }
         
         // quit button
-        //quitButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
-        
+        quitButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+
         // camera view
         cameraView.configure(
             captureAction: cameraController.capturePhoto,
@@ -169,15 +177,23 @@ class CameraHubView: UIViewController {
     }
     
     private func displayView() {
+        
+        // quit button
+        view.edgesAndSize(quitButton, top: .top(view, 15), right: .right(view, -15), height: 30, width: 30)
+        
         // camera view
-        view.edges(cameraView, top: nil, bottom: nil, left: nil, right: nil)
+        view.edges(cameraView, top: .bottom(quitButton, -10), bottom: nil, left: nil, right: nil)
         
         // error view
-        view.edges(errorView, top: nil, bottom: nil, left: nil, right: nil)
+        view.edges(errorView, top: .bottom(quitButton, -10), bottom: nil, left: nil, right: nil)
         
         // review view
-        view.edges(reviewView, top: nil, bottom: nil, left: nil, right: nil)
+        view.edges(reviewView, top: .bottom(quitButton, -10), bottom: nil, left: nil, right: nil)
         
         showView(viewType: .camera)
+    }
+    
+    @objc func dismissVC () {
+        dismiss(animated: true)
     }
 }
