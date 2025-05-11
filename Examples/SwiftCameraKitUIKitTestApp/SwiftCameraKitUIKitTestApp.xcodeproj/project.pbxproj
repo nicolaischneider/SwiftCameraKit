@@ -7,45 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A35930C82DCE306600BA228A /* SwiftCameraKit in Frameworks */ = {isa = PBXBuildFile; productRef = A35930C72DCE306600BA228A /* SwiftCameraKit */; };
+		A31DCAC22DD145BF002DA860 /* SwiftCameraKit in Frameworks */ = {isa = PBXBuildFile; productRef = A31DCAC12DD145BF002DA860 /* SwiftCameraKit */; };
+		A31DCAE32DD14C76002DA860 /* SimpleConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = A31DCAE22DD14C76002DA860 /* SimpleConstraints */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A35930B82DCE303C00BA228A /* SwiftCameraKitTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCameraKitTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A31DCAA82DD14320002DA860 /* SwiftCameraKitUIKitTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCameraKitUIKitTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A31DCABA2DD14322002DA860 /* Exceptions for "SwiftCameraKitUIKitTestApp" folder in "SwiftCameraKitUIKitTestApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A31DCAA72DD14320002DA860 /* SwiftCameraKitUIKitTestApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A35930BA2DCE303C00BA228A /* SwiftCameraKitTestApp */ = {
+		A31DCAAA2DD14320002DA860 /* SwiftCameraKitUIKitTestApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SwiftCameraKitTestApp;
+			exceptions = (
+				A31DCABA2DD14322002DA860 /* Exceptions for "SwiftCameraKitUIKitTestApp" folder in "SwiftCameraKitUIKitTestApp" target */,
+			);
+			path = SwiftCameraKitUIKitTestApp;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A35930B52DCE303C00BA228A /* Frameworks */ = {
+		A31DCAA52DD14320002DA860 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A35930C82DCE306600BA228A /* SwiftCameraKit in Frameworks */,
+				A31DCAC22DD145BF002DA860 /* SwiftCameraKit in Frameworks */,
+				A31DCAE32DD14C76002DA860 /* SimpleConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A35930AF2DCE303C00BA228A = {
+		A31DCA9F2DD14320002DA860 = {
 			isa = PBXGroup;
 			children = (
-				A35930BA2DCE303C00BA228A /* SwiftCameraKitTestApp */,
-				A35930B92DCE303C00BA228A /* Products */,
+				A31DCAAA2DD14320002DA860 /* SwiftCameraKitUIKitTestApp */,
+				A31DCAA92DD14320002DA860 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A35930B92DCE303C00BA228A /* Products */ = {
+		A31DCAA92DD14320002DA860 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A35930B82DCE303C00BA228A /* SwiftCameraKitTestApp.app */,
+				A31DCAA82DD14320002DA860 /* SwiftCameraKitUIKitTestApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -53,68 +68,70 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A35930B72DCE303C00BA228A /* SwiftCameraKitTestApp */ = {
+		A31DCAA72DD14320002DA860 /* SwiftCameraKitUIKitTestApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A35930C32DCE303D00BA228A /* Build configuration list for PBXNativeTarget "SwiftCameraKitTestApp" */;
+			buildConfigurationList = A31DCABB2DD14322002DA860 /* Build configuration list for PBXNativeTarget "SwiftCameraKitUIKitTestApp" */;
 			buildPhases = (
-				A35930B42DCE303C00BA228A /* Sources */,
-				A35930B52DCE303C00BA228A /* Frameworks */,
-				A35930B62DCE303C00BA228A /* Resources */,
+				A31DCAA42DD14320002DA860 /* Sources */,
+				A31DCAA52DD14320002DA860 /* Frameworks */,
+				A31DCAA62DD14320002DA860 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				A35930BA2DCE303C00BA228A /* SwiftCameraKitTestApp */,
+				A31DCAAA2DD14320002DA860 /* SwiftCameraKitUIKitTestApp */,
 			);
-			name = SwiftCameraKitTestApp;
+			name = SwiftCameraKitUIKitTestApp;
 			packageProductDependencies = (
-				A35930C72DCE306600BA228A /* SwiftCameraKit */,
+				A31DCAC12DD145BF002DA860 /* SwiftCameraKit */,
+				A31DCAE22DD14C76002DA860 /* SimpleConstraints */,
 			);
-			productName = SwiftCameraKitTestApp;
-			productReference = A35930B82DCE303C00BA228A /* SwiftCameraKitTestApp.app */;
+			productName = SwiftCameraKitUIKitTestApp;
+			productReference = A31DCAA82DD14320002DA860 /* SwiftCameraKitUIKitTestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A35930B02DCE303C00BA228A /* Project object */ = {
+		A31DCAA02DD14320002DA860 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
-					A35930B72DCE303C00BA228A = {
+					A31DCAA72DD14320002DA860 = {
 						CreatedOnToolsVersion = 16.3;
 					};
 				};
 			};
-			buildConfigurationList = A35930B32DCE303C00BA228A /* Build configuration list for PBXProject "SwiftCameraKitTestApp" */;
+			buildConfigurationList = A31DCAA32DD14320002DA860 /* Build configuration list for PBXProject "SwiftCameraKitUIKitTestApp" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = A35930AF2DCE303C00BA228A;
+			mainGroup = A31DCA9F2DD14320002DA860;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				A35930C62DCE306600BA228A /* XCLocalSwiftPackageReference "../../../SwiftCameraKit" */,
+				A31DCAC02DD145BF002DA860 /* XCLocalSwiftPackageReference "../../../SwiftCameraKit" */,
+				A31DCAE12DD14C76002DA860 /* XCRemoteSwiftPackageReference "SimpleConstraints" */,
 			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = A35930B92DCE303C00BA228A /* Products */;
+			productRefGroup = A31DCAA92DD14320002DA860 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A35930B72DCE303C00BA228A /* SwiftCameraKitTestApp */,
+				A31DCAA72DD14320002DA860 /* SwiftCameraKitUIKitTestApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A35930B62DCE303C00BA228A /* Resources */ = {
+		A31DCAA62DD14320002DA860 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -124,7 +141,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A35930B42DCE303C00BA228A /* Sources */ = {
+		A31DCAA42DD14320002DA860 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -134,7 +151,73 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A35930C12DCE303D00BA228A /* Debug */ = {
+		A31DCABC2DD14322002DA860 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BCM66CYZU6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftCameraKitUIKitTestApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos and videos";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Take videos and record sound";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nicolaischneider.SwiftCameraKitUIKitTestApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A31DCABD2DD14322002DA860 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BCM66CYZU6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftCameraKitUIKitTestApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos and videos";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Take videos and record sound";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nicolaischneider.SwiftCameraKitUIKitTestApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A31DCABE2DD14322002DA860 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -198,7 +281,7 @@
 			};
 			name = Debug;
 		};
-		A35930C22DCE303D00BA228A /* Release */ = {
+		A31DCABF2DD14322002DA860 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -255,83 +338,23 @@
 			};
 			name = Release;
 		};
-		A35930C42DCE303D00BA228A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BCM66CYZU6;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Need Camera permission to take pictures";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need Mic permission to record videos";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nicolaischneider.SwiftCameraKitTestApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		A35930C52DCE303D00BA228A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BCM66CYZU6;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Need Camera permission to take pictures";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need Mic permission to record videos";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nicolaischneider.SwiftCameraKitTestApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A35930B32DCE303C00BA228A /* Build configuration list for PBXProject "SwiftCameraKitTestApp" */ = {
+		A31DCAA32DD14320002DA860 /* Build configuration list for PBXProject "SwiftCameraKitUIKitTestApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A35930C12DCE303D00BA228A /* Debug */,
-				A35930C22DCE303D00BA228A /* Release */,
+				A31DCABE2DD14322002DA860 /* Debug */,
+				A31DCABF2DD14322002DA860 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A35930C32DCE303D00BA228A /* Build configuration list for PBXNativeTarget "SwiftCameraKitTestApp" */ = {
+		A31DCABB2DD14322002DA860 /* Build configuration list for PBXNativeTarget "SwiftCameraKitUIKitTestApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A35930C42DCE303D00BA228A /* Debug */,
-				A35930C52DCE303D00BA228A /* Release */,
+				A31DCABC2DD14322002DA860 /* Debug */,
+				A31DCABD2DD14322002DA860 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -339,18 +362,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		A35930C62DCE306600BA228A /* XCLocalSwiftPackageReference "../../../SwiftCameraKit" */ = {
+		A31DCAC02DD145BF002DA860 /* XCLocalSwiftPackageReference "../../../SwiftCameraKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../../SwiftCameraKit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		A31DCAE12DD14C76002DA860 /* XCRemoteSwiftPackageReference "SimpleConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicolaischneider/SimpleConstraints";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		A35930C72DCE306600BA228A /* SwiftCameraKit */ = {
+		A31DCAC12DD145BF002DA860 /* SwiftCameraKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftCameraKit;
 		};
+		A31DCAE22DD14C76002DA860 /* SimpleConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A31DCAE12DD14C76002DA860 /* XCRemoteSwiftPackageReference "SimpleConstraints" */;
+			productName = SimpleConstraints;
+		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = A35930B02DCE303C00BA228A /* Project object */;
+	rootObject = A31DCAA02DD14320002DA860 /* Project object */;
 }

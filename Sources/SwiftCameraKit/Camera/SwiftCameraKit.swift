@@ -14,7 +14,7 @@ public class SwiftCameraKit: NSObject {
     var currentCamera: AVCaptureDevice?
     var photoOutput: AVCapturePhotoOutput?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
-    var shouldUseFlash = false
+    public var shouldUseFlash = false
     
     var isUsingFrontCamera: Bool {
         self.currentCamera?.position == .front
@@ -25,8 +25,8 @@ public class SwiftCameraKit: NSObject {
     
     // For video recording
     var movieFileOutput: AVCaptureMovieFileOutput?
-    var isRecordingVideo = false
-    var isPhotoMode = true // Default to photo mode
+    public var isRecordingVideo = false
+    public var isPhotoMode = true // Default to photo mode
     var recordingTimer: Timer?
     var recordingDuration: Int = 0
     var maxRecordingDuration: Int = 30 // Max video length in seconds
