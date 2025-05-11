@@ -50,6 +50,7 @@ public class SwiftCameraKit: NSObject {
     var recordingDuration: Int = 0
     var maxRecordingDuration: Int = 30 // Max video length in seconds
     var videoPlayer: AVPlayer?
+    var frontFlashOverlay: UIView?
 
     // Camera Session
     var cameraSessionStarted = false

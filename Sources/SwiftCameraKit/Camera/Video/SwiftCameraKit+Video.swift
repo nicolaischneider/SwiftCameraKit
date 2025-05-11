@@ -93,7 +93,7 @@ extension SwiftCameraKit {
     private func setTorchForVideo(on: Bool) {
         
         guard !self.isUsingFrontCamera else {
-            // view.showFrontCameraFlashForVideo(on)
+            showFrontCameraFlashForVideo(on)
             return
         }
         
@@ -109,6 +109,36 @@ extension SwiftCameraKit {
             device.unlockForConfiguration()
         } catch {
             LogManager.swiftCameraKit.addLog("Error toggling torch: \(error.localizedDescription)")
+        }
+    }
+    
+    private func showFrontCameraFlashForVideo(_ on: Bool) {
+        if on {
+            // Create and add white overlay if it doesn't exist
+            if frontFlashOverlay == nil {
+                frontFlashOverlay = UIView()
+                frontFlashOverlay?.backgroundColor = .white
+                if let firstSubview = view.subviews.first {
+                    view.insertSubview(frontFlashOverlay!, aboveSubview: firstSubview)
+                } else {
+                    view.addSubview(frontFlashOverlay!)
+                }
+                frontFlashOverlay?.frame = view.bounds
+            }
+            
+            // Store current brightness and set to max
+            originalBrightness = UIScreen.main.brightness
+            UIScreen.main.brightness = 1.0
+            
+            // Show overlay
+            frontFlashOverlay?.alpha = 1.0
+            
+        } else {
+            // Hide overlay
+            frontFlashOverlay?.alpha = 0
+            
+            // Restore original brightness
+            UIScreen.main.brightness = originalBrightness
         }
     }
     

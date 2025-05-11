@@ -47,7 +47,6 @@ extension SwiftCameraKit {
     // Turn on/off flash
     public func switchFlash() {
         self.shouldUseFlash.toggle()
-        // view.switchFlashButton(isOn: self.shouldUseFlash)
     }
 
     // Switches between back and front camera
