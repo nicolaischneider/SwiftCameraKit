@@ -37,6 +37,7 @@ class CameraHubView: UIViewController {
     let reviewView = MediaReviewView()
     
     // quit button
+    private let headerView = UIView.view(corner: nil, shadow: false, background: .white)
     let quitButton = UIButton.viewWithImage(
         image: UIImage(systemName: "xmark.circle.fill"),
         tintColor: .black,
@@ -179,21 +180,28 @@ class CameraHubView: UIViewController {
     private func displayView() {
         
         // quit button
-        view.edgesAndSize(quitButton, top: .top(view, 15), right: .right(view, -15), height: 30, width: 30)
+        view.edgesAndHeight(headerView, top: nil, left: nil, right: nil, height: 40)
+        headerView.edgesAndSize(quitButton,
+                          top: .top(headerView, 5),
+                          right: .right(headerView, -5),
+                          height: 30,
+                          width: 30)
         
         // camera view
-        view.edges(cameraView, top: .bottom(quitButton, -10), bottom: nil, left: nil, right: nil)
+        view.edges(cameraView, top: .bottom(headerView, 0), bottom: nil, left: nil, right: nil)
         
         // error view
-        view.edges(errorView, top: .bottom(quitButton, -10), bottom: nil, left: nil, right: nil)
+        view.edges(errorView, top: .bottom(headerView, 0), bottom: nil, left: nil, right: nil)
         
         // review view
-        view.edges(reviewView, top: .bottom(quitButton, -10), bottom: nil, left: nil, right: nil)
+        view.edges(reviewView, top: .bottom(headerView, 0), bottom: nil, left: nil, right: nil)
         
         showView(viewType: .camera)
     }
     
     @objc func dismissVC () {
+        cameraController?.reset()
+        cameraController = nil
         dismiss(animated: true)
     }
 }

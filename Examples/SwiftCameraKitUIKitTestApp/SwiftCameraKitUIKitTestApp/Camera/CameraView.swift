@@ -130,19 +130,14 @@ class CameraView: UIView {
         switch mode {
         case .photo:
             photoModeButton.setTitleColor(.white, for: .normal)
-            
             videoModeButton.setTitleColor(UIColor(white: 1, alpha: 0.5), for: .normal)
-            
             recordingRedDot.alpha = 0
             
         case .video(let isRecording):
             photoModeButton.setTitleColor(UIColor(white: 1, alpha: 0.5), for: .normal)
-            
             videoModeButton.setTitleColor(.white, for: .normal)
-            
             recordingRedDot.alpha = 1
             recordingRedDot.setCornerRadius(isRecording ? 5 : 13)
-            
             switchFlashButton.alpha = isRecording ? 0 : 1
             switchCameraButton.alpha = isRecording ? 0 : 1
             photoModeButton.alpha = isRecording ? 0 : 1
