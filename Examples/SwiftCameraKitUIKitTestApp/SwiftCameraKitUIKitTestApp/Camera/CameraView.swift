@@ -70,6 +70,7 @@ class CameraView: UIView {
     private var captureMode: CaptureMode = .photo
         
     var isMicEnabled = true
+    var isFlashOn: Bool = false
     
     private var originalBrightness: CGFloat = 0.0
     
@@ -85,11 +86,13 @@ class CameraView: UIView {
     func configure (
         captureAction: @escaping () -> Void,
         videoAction: @escaping (Bool) -> Void,
+        isFlashOn: Bool,
         switchCameraAction: @escaping () -> Void,
         switchFlashAction: @escaping () -> Void,
         switchRecordingToPhotoAction: @escaping (Bool) -> Void
     ) {
         // actions
+        self.isFlashOn = isFlashOn
         self.captureAction = captureAction
         self.videoAction = videoAction
         self.switchCameraAction = switchCameraAction
@@ -117,10 +120,6 @@ class CameraView: UIView {
         }
         switchMode(to: self.captureMode)
         loadingView.show(false)
-    }
-    
-    func switchFlashButton (isOn: Bool) {
-        switchFlashButton.setImage(UIImage(named: isOn ? "flash_on" : "flash_off"), for: .normal)
     }
     
     func switchMode(to mode: CaptureMode) {
@@ -177,6 +176,8 @@ class CameraView: UIView {
     }
     
     @objc func switchFlashButtonAction() {
+        isFlashOn.toggle()
+        switchFlashButton.setImage(UIImage(named: isFlashOn ? "flash_on" : "flash_off"), for: .normal)
         switchFlashAction?()
     }
     

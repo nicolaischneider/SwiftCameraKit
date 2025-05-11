@@ -7,35 +7,11 @@ public class SwiftCameraKit: NSObject {
     
     var view: UIView
     
-    // Camera values
-    var captureSession: AVCaptureSession?
-    var backCamera: AVCaptureDevice?
-    var frontCamera: AVCaptureDevice?
-    var currentCamera: AVCaptureDevice?
-    var photoOutput: AVCapturePhotoOutput?
-    var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
+    // MARK: Public Properties
     public var shouldUseFlash = false
-    
-    var isUsingFrontCamera: Bool {
-        self.currentCamera?.position == .front
-    }
-    
-    // front camera flash for video
-    var originalBrightness: CGFloat = 0.0
-    
-    // For video recording
-    var movieFileOutput: AVCaptureMovieFileOutput?
     public var isRecordingVideo = false
     public var isPhotoMode = true // Default to photo mode
-    var recordingTimer: Timer?
-    var recordingDuration: Int = 0
-    var maxRecordingDuration: Int = 30 // Max video length in seconds
-    var videoPlayer: AVPlayer?
-
-    // Camera Session
-    var cameraSessionStarted = false
-    var cameraSessionCommitted = false
-        
+    
     @Published public var state: CameraOutput? {
         didSet {
             // Clean up previous video file if we're changing from .videoOutput to something else
@@ -52,6 +28,32 @@ public class SwiftCameraKit: NSObject {
             }
         }
     }
+    
+    // Camera values
+    var captureSession: AVCaptureSession?
+    var backCamera: AVCaptureDevice?
+    var frontCamera: AVCaptureDevice?
+    var currentCamera: AVCaptureDevice?
+    var photoOutput: AVCapturePhotoOutput?
+    var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
+    
+    var isUsingFrontCamera: Bool {
+        self.currentCamera?.position == .front
+    }
+    
+    // front camera flash for video
+    var originalBrightness: CGFloat = 0.0
+    
+    // For video recording
+    var movieFileOutput: AVCaptureMovieFileOutput?
+    var recordingTimer: Timer?
+    var recordingDuration: Int = 0
+    var maxRecordingDuration: Int = 30 // Max video length in seconds
+    var videoPlayer: AVPlayer?
+
+    // Camera Session
+    var cameraSessionStarted = false
+    var cameraSessionCommitted = false
     
     public init(
         view: UIView

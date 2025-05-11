@@ -167,6 +167,7 @@ class CameraHubView: UIViewController {
                     cameraController.stopVideoRecording()
                 }
             },
+            isFlashOn: cameraController.shouldUseFlash,
             switchCameraAction: cameraController.switchCamera,
             switchFlashAction: cameraController.switchFlash,
             switchRecordingToPhotoAction: { toPhoto in
