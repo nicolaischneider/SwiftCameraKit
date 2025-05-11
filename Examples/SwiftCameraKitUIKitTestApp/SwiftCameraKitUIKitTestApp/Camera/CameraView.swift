@@ -71,9 +71,7 @@ class CameraView: UIView {
         
     var isMicEnabled = true
     var isFlashOn: Bool = false
-    
-    private var originalBrightness: CGFloat = 0.0
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         print("loading camera view")
@@ -122,7 +120,7 @@ class CameraView: UIView {
         loadingView.show(false)
     }
     
-    func switchMode(to mode: CaptureMode) {
+    private func switchMode(to mode: CaptureMode) {
         self.captureMode = mode
         
         // Update UI based on selected mode
@@ -190,27 +188,11 @@ class CameraView: UIView {
         switchMode(to: .video(recording: false))
         switchRecordingToPhotoAction?(false)
     }
-    
-    func showFrontCameraFlashForVideo(_ show: Bool) {
-        
-        // hide or show fdlash view
-        frontCameraVideoFlash.alpha = show ? 1 : 0
-        
-        if show {
-            // Store the original brightness to restore later
-            originalBrightness = UIScreen.main.brightness
-            
-            // Set screen to maximum brightness
-            UIScreen.main.brightness = 1.0
-        } else {
-            UIScreen.main.brightness = originalBrightness
-        }
-    }
 }
 
 extension CameraView {
     
-    func setupView() {
+    internal func setupView() {
         // Set Constraints for camera objects and filter
         constraintsCameraObjects()
         
