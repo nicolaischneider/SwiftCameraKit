@@ -72,8 +72,4 @@ public class SwiftCameraKit: NSObject {
         super.init()
         self.subscribeToObserver()
     }
-    
-    deinit {
-        reset()
-    }
 }
