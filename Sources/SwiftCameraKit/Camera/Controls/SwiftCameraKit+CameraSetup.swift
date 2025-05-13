@@ -166,8 +166,8 @@ extension SwiftCameraKit {
                     LogManager.swiftCameraKit.addLog("Could not add audio input to session")
                 }
             } catch {
-                LogManager.swiftCameraKit.addLog("Could not create audio input: \(error.localizedDescription)")
                 // Continue without audio rather than failing completely
+                LogManager.swiftCameraKit.addLog("Could not create audio input: \(error.localizedDescription)")
             }
         }
         

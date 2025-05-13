@@ -40,13 +40,13 @@ extension SwiftCameraKit {
         self.videoPlayer = player
     }
     
-    @objc func restartVideo() {
+    @objc public func restartVideo() {
         if let videoPlayer = videoPlayer {
             videoPlayer.play()
         }
     }
     
-    @objc func pauseVideo() {
+    @objc public func pauseVideo() {
         videoPlayer?.pause()
     }
     

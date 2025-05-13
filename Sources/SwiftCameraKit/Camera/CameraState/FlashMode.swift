@@ -11,18 +11,3 @@ public enum FlashMode {
         }
     }
 }
-
-public enum RecordingVideo {
-    case isRecording
-    case notRecording
-}
-
-public enum MediaMode {
-    case photo
-    case video
-}
-
-public enum CameraMode {
-    case front
-    case back
-}
