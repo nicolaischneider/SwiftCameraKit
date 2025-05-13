@@ -4,27 +4,36 @@ import os
 
 extension SwiftCameraKit {
  
-    /* HIDING SIMULATOR FEATURE FOR NOW
     #if targetEnvironment(simulator)
-
+    
     // MARK: - Simulator
-
-    func switchCamera() {}
     
-    func switchFlash() {}
+    // Switch between photo and video mode
+    public func switchCaptureMode(to mediaMode: MediaMode) {
+        self.mediaMode = mediaMode
+        // Notify any observers or update UI if needed
+        LogManager.swiftCameraKit.addLog("[Simulator] Switched to \(mediaMode) mode")
+    }
     
-    // fake switch between video and photo
-    func switchCaptureMode(toPhoto: Bool) {}
+    // Turn on/off flash
+    public func switchFlash() {
+        self.flashMode = self.flashMode.toggle
+        LogManager.swiftCameraKit.addLog("[Simulator] Flash switched to \(flashMode)")
+    }
     
-    #else*/
-
+    // Switches between back and front camera
+    public func switchCamera() {
+        LogManager.swiftCameraKit.addLog("[Simulator] Camera switched")
+    }
+    
+    #else
+    
     // MARK: - Device
 
     // MARK: Camera Controls
 
     // Switch between photo and video mode
     public func switchCaptureMode(to mediaMode: MediaMode) {
-        
         // no need to update the configs if settings are already set
         self.mediaMode = mediaMode
         
@@ -49,7 +58,6 @@ extension SwiftCameraKit {
 
     // Switches between back and front camera
     public func switchCamera() {
-        
         guard cameraSessionStarted, cameraSessionCommitted else {
             LogManager.swiftCameraKit.addLog("Camera hasn't loaded yet.")
             return
@@ -101,5 +109,5 @@ extension SwiftCameraKit {
 
         session.commitConfiguration()
     }
-   // #endif
+    #endif
 }

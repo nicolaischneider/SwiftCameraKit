@@ -81,17 +81,33 @@ extension SwiftCameraKit {
             return false
         }
     }
+        
+    #if targetEnvironment(simulator)
+
+    // MARK: - Simulator Mode
+
+    public func setupSessionAndCamera() {
+        LogManager.swiftCameraKit.addLog("[Simulator] Setting up mock camera session")
+    }
+
+    public func restartCaptureSession() {
+        LogManager.swiftCameraKit.addLog("[Simulator] Restarting mock capture session")
+    }
+
+    public func stopCaptureSession() {
+        LogManager.swiftCameraKit.addLog("[Simulator] Stopping mock capture session")
+    }
+
+    private func setupAudioSession() -> Bool {
+        LogManager.swiftCameraKit.addLog("[Simulator] Setting up mock audio session")
+        return true
+    }
+    
+    #else
     
     // MARK: - Simulator Mode
     
-    /* HIDING SIMULATOR FEATURE FOR NOW
-    #if targetEnvironment(simulator)
-    private func configureCaptureSession() {}
-    private func setupCameraLayer() {}
-    private func setupAudioSession() -> Bool { true }
-    #else*/
-    
-    // MARK: - Configuring Capture Session
+    // MARK - Configuring Capture Session
     
     public func setupSessionAndCamera() {
         DispatchQueue.main.async {
@@ -293,5 +309,6 @@ extension SwiftCameraKit {
         
         view.layer.insertSublayer(cameraPreviewLayer, at: 0)
     }
-    //#endif
+    
+    #endif
 }

@@ -6,19 +6,21 @@ extension SwiftCameraKit {
     
     // MARK: - Video Recording
     
-    /* HIDING SIMULATOR FEATURE FOR NOW
     #if targetEnvironment(simulator)
     
     // MARK: Simulator
     
-    func startVideoRecording() {
-        isRecordingVideo = true
+    public func startVideoRecording() {
+        recordingState = .isRecording
+        LogManager.swiftCameraKit.addLog("[Simulator] Started mock video recording (Note: No actual video will be recorded in simulator)")
     }
     
-    func stopVideoRecording() {
-        isRecordingVideo = false
+    public func stopVideoRecording() {
+        recordingState = .notRecording
+        LogManager.swiftCameraKit.addLog("[Simulator] Stopped mock video recording")
     }
-    #else*/
+    
+    #else
     
     // MARK: Device
 
@@ -163,5 +165,5 @@ extension SwiftCameraKit {
         recordingTimer?.invalidate()
         recordingTimer = nil
     }
-    // #endif
+    #endif
 }

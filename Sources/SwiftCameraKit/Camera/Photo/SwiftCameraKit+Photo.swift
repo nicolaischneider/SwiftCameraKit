@@ -5,17 +5,20 @@ import os
 extension SwiftCameraKit {
     
     // MARK: - Photo Capture
-    
-    // Simulator
-    
-    /* HIDING SIMULATOR FEATURE FOR NOW
+        
     #if targetEnvironment(simulator)
-    func capturePhoto() {
-        self.finalPhoto = UIImage(named: "story-static-img")!
+
+    // MARK: - Simulator Mode
+
+    public func capturePhoto() {
+        LogManager.swiftCameraKit.addLog("[Simulator] Taking mock photo using system camera icon")
+        self.state = .photoOutput(UIImage(systemName: "camera.viewfinder") ?? UIImage())
     }
     
-    // Real Device
-    #else*/
+    #else
+
+    // MARK: - Device
+    
     public func capturePhoto() {
         mediaMode = .photo
         
@@ -36,5 +39,5 @@ extension SwiftCameraKit {
         
         photoOutput?.capturePhoto(with: settings, delegate: self)
     }
-    //#endif
+    #endif
 }
