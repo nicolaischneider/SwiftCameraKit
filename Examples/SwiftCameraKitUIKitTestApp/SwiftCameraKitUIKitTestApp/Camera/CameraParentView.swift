@@ -167,11 +167,11 @@ class CameraHubView: UIViewController {
                     cameraController.stopVideoRecording()
                 }
             },
-            isFlashOn: cameraController.shouldUseFlash,
+            isFlashOn: cameraController.flashMode == .on,
             switchCameraAction: cameraController.switchCamera,
             switchFlashAction: cameraController.switchFlash,
             switchRecordingToPhotoAction: { toPhoto in
-                cameraController.switchCaptureMode(toPhoto: toPhoto)
+                cameraController.switchCaptureMode(to: toPhoto ? .photo : .video)
             })
         
         // error view
