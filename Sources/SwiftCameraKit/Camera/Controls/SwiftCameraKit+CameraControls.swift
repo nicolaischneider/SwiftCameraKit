@@ -32,7 +32,15 @@ extension SwiftCameraKit {
 
     // MARK: Camera Controls
 
-    // Switch between photo and video mode
+    /// Switches between photo and video capture modes.
+    ///
+    /// This method configures the camera session for either photo or video capture
+    /// by setting the appropriate session preset and updating internal state.
+    ///
+    /// - Parameter mediaMode: The desired media capture mode (`.photo` or `.video`).
+    ///
+    /// - Note: This method can be called at any time, even while the camera is active.
+    ///         The camera session will be reconfigured immediately.
     public func switchCaptureMode(to mediaMode: MediaMode) {
         // no need to update the configs if settings are already set
         self.mediaMode = mediaMode
@@ -51,12 +59,28 @@ extension SwiftCameraKit {
         captureSession?.commitConfiguration()
     }
         
-    // Turn on/off flash
+    /// Toggles the flash mode between on and off.
+    ///
+    /// This method switches the camera flash state. In photo mode, this controls the flash
+    /// when taking a picture. In video mode, this controls the torch (continuous light).
+    ///
+    /// - Note: When using the front camera in video mode, a screen-based flash simulation
+    ///         is used since most front cameras don't have a physical flash/torch.
     public func switchFlash() {
         self.flashMode = self.flashMode.toggle
     }
 
-    // Switches between back and front camera
+    /// Switches between the front and back cameras.
+    ///
+    /// This method reconfigures the capture session to use the opposite camera
+    /// from the one currently in use. If the back camera is active, it switches to
+    /// the front camera, and vice versa.
+    ///
+    /// - Note: This method requires the camera session to be started and committed.
+    ///         If the camera session isn't ready, the switch will not occur.
+    ///
+    /// - Important: This operation may take a moment to complete as it requires
+    ///              reconfiguring the entire capture session.
     public func switchCamera() {
         guard cameraSessionStarted, cameraSessionCommitted else {
             LogManager.swiftCameraKit.addLog("Camera hasn't loaded yet.")

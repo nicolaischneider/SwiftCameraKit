@@ -4,7 +4,7 @@ import os
 
 extension SwiftCameraKit: AVCapturePhotoCaptureDelegate {
     
-    // This method gets called once the photo is captured
+    /// This method gets called once the photo is captured
     public func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard error == nil else {
             LogManager.swiftCameraKit.addLog("Error in capturing photo: \(error?.localizedDescription ?? "error localization failed")")

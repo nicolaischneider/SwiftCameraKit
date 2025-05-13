@@ -4,6 +4,20 @@ import os
 
 extension SwiftCameraKit {
     
+    /// Sets up video playback in a specified view.
+    ///
+    /// This method configures and starts playback of a recorded video in the provided view.
+    /// It automatically configures looping playback, so the video will repeat continuously.
+    ///
+    /// - Parameters:
+    ///   - playerView: The UIView where the video will be displayed.
+    ///   - videoURL: The URL of the video file to play.
+    ///
+    /// - Note: If there was already video playback configured in the provided view,
+    ///         it will be stopped and replaced with the new video.
+    ///
+    /// - Important: The video gravity (aspect ratio handling) is based on the configured
+    ///              `videoGravity` setting in `SwiftCameraKitConfig.VideoSettings`.
     public func setupVideoPlayback(in playerView: UIView, videoURL: URL) {
         // Create AVPlayer
         let player = AVPlayer(url: videoURL)
@@ -40,12 +54,25 @@ extension SwiftCameraKit {
         self.videoPlayer = player
     }
     
+    /// Resumes playback of a previously setup video.
+    ///
+    /// This method resumes playback if it was paused. It is automatically called
+    /// when the app returns to the foreground.
+    ///
+    /// - Note: This method has no effect if no video player is currently set up.
     @objc public func restartVideo() {
         if let videoPlayer = videoPlayer {
             videoPlayer.play()
         }
     }
     
+    /// Pauses the currently playing video.
+    ///
+    /// This method pauses the video playback. It is automatically called
+    /// when the app enters the background.
+    ///
+    /// - Note: This method has no effect if no video player is currently set up
+    ///         or if the video is already paused.
     @objc public func pauseVideo() {
         videoPlayer?.pause()
     }

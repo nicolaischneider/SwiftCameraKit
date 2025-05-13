@@ -19,6 +19,22 @@ extension SwiftCameraKit {
 
     // MARK: - Device
     
+    /// Captures a photo with the current camera and settings.
+    ///
+    /// This method takes a photo using the configured camera, applying the current
+    /// flash mode and quality settings. After capture, the camera preview is temporarily
+    /// paused until processing completes.
+    ///
+    /// - Note: The result of the photo capture will be delivered asynchronously through
+    ///         the `state` property, which will be updated with either:
+    ///         - `.photoOutput(UIImage)` containing the captured image
+    ///         - `.error(SwiftCameraKitError)` if an error occurs
+    ///
+    /// - Important: The camera is automatically switched to photo mode if it's currently
+    ///              in video mode. The camera preview will be paused during capture.
+    ///
+    /// - Requires: Camera permission must be granted and the camera session must be started
+    ///             before calling this method.
     public func capturePhoto() {
         mediaMode = .photo
         

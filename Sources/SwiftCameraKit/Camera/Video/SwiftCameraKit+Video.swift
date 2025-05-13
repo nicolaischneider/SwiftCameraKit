@@ -24,6 +24,12 @@ extension SwiftCameraKit {
     
     // MARK: Device
 
+    /// Starts recording a video with the current camera settings.
+    ///
+    /// Uses temporary storage to record a video file. Recording will automatically stop
+    /// when maximum duration is reached.
+    ///
+    /// - Note: Results delivered via `state` property as `.videoOutput(URL)` or `.error`.
     public func startVideoRecording() {
         mediaMode = .video
 
@@ -71,6 +77,9 @@ extension SwiftCameraKit {
         startRecordingTimer()
     }
     
+    /// Stops the current video recording session.
+    ///
+    /// Has no effect if no recording is in progress.
     public func stopVideoRecording() {
         guard let movieFileOutput = movieFileOutput, movieFileOutput.isRecording else {
             LogManager.swiftCameraKit.addLog("Cannot stop recording: not currently recording")

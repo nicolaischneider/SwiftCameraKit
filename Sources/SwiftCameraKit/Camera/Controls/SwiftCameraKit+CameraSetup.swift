@@ -109,6 +109,17 @@ extension SwiftCameraKit {
     
     // MARK - Configuring Capture Session
     
+    /// Sets up the camera capture session and preview layer.
+    ///
+    /// This method configures the capture session with the appropriate inputs and outputs
+    /// based on the current configuration, and creates a preview layer to display
+    /// the camera feed in the view.
+    ///
+    /// - Note: This method should be called after `grantAccessForCameraAndAudio()` has
+    ///         successfully completed with a `.success` result.
+    ///
+    /// - Important: This method runs on the main thread as it involves UI updates
+    ///              for the camera preview layer.
     public func setupSessionAndCamera() {
         DispatchQueue.main.async {
             self.configureCaptureSession()
@@ -116,6 +127,17 @@ extension SwiftCameraKit {
         }
     }
     
+    /// Restarts the camera capture session if it was stopped.
+    ///
+    /// This method re-enables the camera preview layer connection, cleans up any
+    /// video playback that might be active, and starts the capture session
+    /// if it's not already running.
+    ///
+    /// - Note: This is useful after taking a photo or recording a video when you
+    ///         want to return to the camera preview for another capture.
+    ///
+    /// - Important: The session restart occurs on a background thread to avoid
+    ///              blocking the UI.
     public func restartCaptureSession() {
         cameraPreviewLayer?.connection?.isEnabled = true
         cleanupVideoPlayback()
@@ -126,6 +148,13 @@ extension SwiftCameraKit {
         }
     }
     
+    /// Stops the active camera capture session.
+    ///
+    /// This method stops the camera preview and resource usage by stopping
+    /// the capture session if it's currently running.
+    ///
+    /// - Note: After stopping the session, you can restart it with `restartCaptureSession()`.
+    ///         This is automatically called when taking photos or recording videos.
     public func stopCaptureSession() {
         if let session = captureSession, session.isRunning {
             session.stopRunning()
