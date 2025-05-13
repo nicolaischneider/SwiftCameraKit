@@ -57,6 +57,9 @@ extension SwiftCameraKit {
         }
         
         captureSession?.commitConfiguration()
+        
+        LogManager.swiftCameraKit.addLog("Switched to \(mediaMode) mode")
+
     }
         
     /// Toggles the flash mode between on and off.
@@ -68,6 +71,8 @@ extension SwiftCameraKit {
     ///         is used since most front cameras don't have a physical flash/torch.
     public func switchFlash() {
         self.flashMode = self.flashMode.toggle
+        LogManager.swiftCameraKit.addLog("Flash switched to \(flashMode)")
+
     }
 
     /// Switches between the front and back cameras.
@@ -132,6 +137,8 @@ extension SwiftCameraKit {
         }
 
         session.commitConfiguration()
+        
+        LogManager.swiftCameraKit.addLog("Switched camera to \(cameraMode)")
     }
     #endif
 }

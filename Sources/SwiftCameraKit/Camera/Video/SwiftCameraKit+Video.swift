@@ -31,6 +31,8 @@ extension SwiftCameraKit {
     ///
     /// - Note: Results delivered via `state` property as `.videoOutput(URL)` or `.error`.
     public func startVideoRecording() {
+        LogManager.swiftCameraKit.addLog("Starting video recording")
+        
         mediaMode = .video
 
         guard let movieFileOutput = movieFileOutput, !movieFileOutput.isRecording else {
@@ -81,6 +83,9 @@ extension SwiftCameraKit {
     ///
     /// Has no effect if no recording is in progress.
     public func stopVideoRecording() {
+        
+        LogManager.swiftCameraKit.addLog("Stop video recording")
+        
         guard let movieFileOutput = movieFileOutput, movieFileOutput.isRecording else {
             LogManager.swiftCameraKit.addLog("Cannot stop recording: not currently recording")
             return

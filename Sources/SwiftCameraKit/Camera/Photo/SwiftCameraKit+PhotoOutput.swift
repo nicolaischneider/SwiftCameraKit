@@ -6,6 +6,9 @@ extension SwiftCameraKit: AVCapturePhotoCaptureDelegate {
     
     /// This method gets called once the photo is captured
     public func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        
+        LogManager.swiftCameraKit.addLog("Photo captured and processed...")
+        
         guard error == nil else {
             LogManager.swiftCameraKit.addLog("Error in capturing photo: \(error?.localizedDescription ?? "error localization failed")")
             state = .error(.photoOutputFailed)
@@ -28,6 +31,7 @@ extension SwiftCameraKit: AVCapturePhotoCaptureDelegate {
 
         DispatchQueue.main.async {
             self.stopCaptureSession()
+            LogManager.swiftCameraKit.addLog("Photo is ready...")
             self.state = .photoOutput(capturedImage)
         }
     }

@@ -24,6 +24,8 @@ extension SwiftCameraKit {
         
         // Remove notification observers
         removeObservers()
+        
+        LogManager.swiftCameraKit.addLog("SwiftCameraKit: reset completed")
     }
 
     // Stop any active video recording

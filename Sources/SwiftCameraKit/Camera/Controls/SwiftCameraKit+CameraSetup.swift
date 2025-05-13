@@ -163,6 +163,8 @@ extension SwiftCameraKit {
     
     private func configureCaptureSession() {
         
+        LogManager.swiftCameraKit.addLog("Configuring capture session...")
+        
         // Start off with photo session
         captureSession = AVCaptureSession()
         captureSession?.sessionPreset = configs.photoSetting.photoSessionPreset
@@ -268,6 +270,8 @@ extension SwiftCameraKit {
             self?.captureSession?.startRunning()
             self?.cameraSessionStarted = true
         }
+        
+        LogManager.swiftCameraKit.addLog("Configured capture session")
     }
     
     private func configureCamera(_ device: AVCaptureDevice) throws {

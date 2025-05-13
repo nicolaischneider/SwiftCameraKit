@@ -36,6 +36,9 @@ extension SwiftCameraKit {
     /// - Requires: Camera permission must be granted and the camera session must be started
     ///             before calling this method.
     public func capturePhoto() {
+        
+        LogManager.swiftCameraKit.addLog("Capturing photo...")
+        
         mediaMode = .photo
         
         // Immediately pause the preview layer animation

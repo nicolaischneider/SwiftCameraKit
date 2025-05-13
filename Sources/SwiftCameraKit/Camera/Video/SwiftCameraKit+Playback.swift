@@ -52,6 +52,8 @@ extension SwiftCameraKit {
         
         // Store player reference if needed for later
         self.videoPlayer = player
+        
+        LogManager.swiftCameraKit.addLog("Video playback setup complete.")
     }
     
     /// Resumes playback of a previously setup video.
@@ -61,6 +63,7 @@ extension SwiftCameraKit {
     ///
     /// - Note: This method has no effect if no video player is currently set up.
     @objc public func restartVideo() {
+        LogManager.swiftCameraKit.addLog("Restarting video playback.")
         if let videoPlayer = videoPlayer {
             videoPlayer.play()
         }
@@ -74,10 +77,13 @@ extension SwiftCameraKit {
     /// - Note: This method has no effect if no video player is currently set up
     ///         or if the video is already paused.
     @objc public func pauseVideo() {
+        LogManager.swiftCameraKit.addLog("Pausing video playback.")
         videoPlayer?.pause()
     }
     
     func cleanupVideoPlayback() {
+        LogManager.swiftCameraKit.addLog("Cleanup video playback.")
+        
         // Stop playback
         videoPlayer?.pause()
         

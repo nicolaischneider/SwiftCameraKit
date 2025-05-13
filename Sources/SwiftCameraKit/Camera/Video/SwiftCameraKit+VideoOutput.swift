@@ -26,6 +26,8 @@ extension SwiftCameraKit: AVCaptureFileOutputRecordingDelegate {
     }
     
     private func processRecordedVideo(videoURL: URL) {
+        LogManager.swiftCameraKit.addLog("Video recording finished and processed")
+        
         // Store original URL
         self.state = .videoOutput(videoURL)
         
