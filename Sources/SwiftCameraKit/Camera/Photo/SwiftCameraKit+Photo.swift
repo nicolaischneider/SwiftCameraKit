@@ -17,7 +17,7 @@ extension SwiftCameraKit {
     // Real Device
     #else*/
     public func capturePhoto() {
-        self.isPhotoMode = true
+        mediaMode = .photo
         
         // Immediately pause the preview layer animation
         cameraPreviewLayer?.connection?.isEnabled = false
@@ -28,7 +28,7 @@ extension SwiftCameraKit {
         settings.isHighResolutionPhotoEnabled = true
         settings.photoQualityPrioritization = .quality
         
-        if shouldUseFlash {
+        if flashMode == .on {
             settings.flashMode = .on
         }
         

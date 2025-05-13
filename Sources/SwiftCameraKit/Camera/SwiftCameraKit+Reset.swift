@@ -28,8 +28,8 @@ extension SwiftCameraKit {
 
     // Stop any active video recording
     private func breakVideoRecording() {
-        if isRecordingVideo, let movieFileOutput = movieFileOutput {
-            isRecordingVideo = false
+        if recordingState == .isRecording, let movieFileOutput = movieFileOutput {
+            recordingState = .notRecording
             movieFileOutput.stopRecording()
         }
     }
@@ -103,11 +103,11 @@ extension SwiftCameraKit {
         currentCamera = nil
         photoOutput = nil
         movieFileOutput = nil
-        shouldUseFlash = false
+        flashMode = .off
         
         // Recording state
-        isRecordingVideo = false
-        isPhotoMode = true
+        recordingState = .notRecording
+        mediaMode = .photo
     }
 
     // Remove any notification observers

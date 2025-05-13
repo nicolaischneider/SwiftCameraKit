@@ -8,9 +8,16 @@ public class SwiftCameraKit: NSObject {
     var view: UIView
     
     // MARK: Public Properties
-    public var shouldUseFlash = false
-    public var isRecordingVideo = false
-    public var isPhotoMode = true // Default to photo mode
+    
+    internal(set) public var flashMode: FlashMode = .off
+    
+    internal(set) public var recordingState: RecordingVideo = .notRecording
+    
+    internal(set) public var mediaMode: MediaMode = .photo
+    
+    public var cameraMode: CameraMode {
+        return self.currentCamera?.position == .front ? .front : .back
+    }
     
     @Published public var state: CameraOutput? {
         didSet {
@@ -29,6 +36,8 @@ public class SwiftCameraKit: NSObject {
         }
     }
     
+    // MARK: Internal Properties
+    
     // Camera values
     var captureSession: AVCaptureSession?
     var backCamera: AVCaptureDevice?
@@ -36,10 +45,6 @@ public class SwiftCameraKit: NSObject {
     var currentCamera: AVCaptureDevice?
     var photoOutput: AVCapturePhotoOutput?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
-    
-    var isUsingFrontCamera: Bool {
-        self.currentCamera?.position == .front
-    }
     
     // front camera flash for video
     var originalBrightness: CGFloat = 0.0

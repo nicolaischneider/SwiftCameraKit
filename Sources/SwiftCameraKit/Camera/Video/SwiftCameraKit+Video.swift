@@ -23,7 +23,7 @@ extension SwiftCameraKit {
     // MARK: Device
 
     public func startVideoRecording() {
-        self.isPhotoMode = false
+        mediaMode = .video
 
         guard let movieFileOutput = movieFileOutput, !movieFileOutput.isRecording else {
             LogManager.swiftCameraKit.addLog("Cannot start recording: already recording or output not configured")
@@ -48,7 +48,7 @@ extension SwiftCameraKit {
         }
         
         // Update UI state
-        isRecordingVideo = true
+        recordingState = .isRecording
         
         // Create temporary URL for the video file
         let tempDir = NSTemporaryDirectory()
@@ -58,7 +58,7 @@ extension SwiftCameraKit {
             .appendingPathExtension("mov")
         
         // Configure flash if needed
-        if shouldUseFlash {
+        if flashMode == .on {
             setTorchForVideo(on: true)
         }
         
@@ -76,10 +76,10 @@ extension SwiftCameraKit {
         }
         
         // Update UI state
-        isRecordingVideo = false
-        
+        recordingState = .notRecording
+
         // Turn off torch if it was on
-        if shouldUseFlash {
+        if flashMode == .on {
             setTorchForVideo(on: false)
         }
         
@@ -92,7 +92,7 @@ extension SwiftCameraKit {
     
     private func setTorchForVideo(on: Bool) {
         
-        guard !self.isUsingFrontCamera else {
+        guard cameraMode == .back else {
             showFrontCameraFlashForVideo(on)
             return
         }

@@ -23,21 +23,19 @@ extension SwiftCameraKit {
     // MARK: Camera Controls
 
     // Switch between photo and video mode
-    public func switchCaptureMode(toPhoto: Bool) {
+    public func switchCaptureMode(to mediaMode: MediaMode) {
         
         // no need to update the configs if settings are already set
-        guard isPhotoMode != toPhoto else {
-            return
-        }
-        
-        isPhotoMode = toPhoto
+        self.mediaMode = mediaMode
         
         captureSession?.beginConfiguration()
         
         // Update session preset based on mode
-        if toPhoto {
+        switch mediaMode {
+        case .photo:
             captureSession?.sessionPreset = .photo
-        } else {
+
+        case .video:
             captureSession?.sessionPreset = .high // For video recording
         }
         
@@ -46,7 +44,7 @@ extension SwiftCameraKit {
         
     // Turn on/off flash
     public func switchFlash() {
-        self.shouldUseFlash.toggle()
+        self.flashMode = self.flashMode.toggle
     }
 
     // Switches between back and front camera
@@ -70,7 +68,7 @@ extension SwiftCameraKit {
         }
 
         // Remove and re-add video output if in video mode
-        if !isPhotoMode, let output = movieFileOutput {
+        if mediaMode == .video, let output = movieFileOutput {
             session.removeOutput(output)
         }
 
@@ -90,7 +88,7 @@ extension SwiftCameraKit {
             }
 
             // Re-add video output if in video mode
-            if !isPhotoMode, let output = movieFileOutput, session.canAddOutput(output) {
+            if mediaMode == .video, let output = movieFileOutput, session.canAddOutput(output) {
                 session.addOutput(output)
             }
         } catch {
