@@ -55,16 +55,21 @@ public class SwiftCameraKit: NSObject {
     var recordingDuration: Int = 0
     var maxRecordingDuration: Int = 30 // Max video length in seconds
     var videoPlayer: AVPlayer?
-    var frontFlashOverlay: UIView?
+    var frontFlashOverlay: UIView? // white brightr screen for flash during video recording using front camera
 
     // Camera Session
     var cameraSessionStarted = false
     var cameraSessionCommitted = false
     
+    // Configs
+    var configs: SwiftCameraKitConfig
+    
     public init(
-        view: UIView
+        view: UIView,
+        configs: SwiftCameraKitConfig = SwiftCameraKitConfig()
     ) {
         self.view = view
+        self.configs = configs
         super.init()
         self.subscribeToObserver()
     }
@@ -73,7 +78,7 @@ public class SwiftCameraKit: NSObject {
         reset()
     }
     
-    func subscribeToObserver() {
+    private func subscribeToObserver() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(pauseVideo),
@@ -83,21 +88,5 @@ public class SwiftCameraKit: NSObject {
             self,
             selector: #selector(restartVideo),
             name: UIApplication.willEnterForegroundNotification, object: nil)
-    }
-    
-    public func restartCaptureSession() {
-        cameraPreviewLayer?.connection?.isEnabled = true
-        cleanupVideoPlayback()
-        DispatchQueue.global(qos: .background).async { [weak self] in
-            if let session = self?.captureSession, !session.isRunning {
-                session.startRunning()
-            }
-        }
-    }
-    
-    public func stopCaptureSession() {
-        if let session = captureSession, session.isRunning {
-            session.stopRunning()
-        }
     }
 }

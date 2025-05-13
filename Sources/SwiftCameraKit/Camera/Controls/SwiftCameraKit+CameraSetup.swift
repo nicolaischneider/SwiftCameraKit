@@ -100,6 +100,22 @@ extension SwiftCameraKit {
         }
     }
     
+    public func restartCaptureSession() {
+        cameraPreviewLayer?.connection?.isEnabled = true
+        cleanupVideoPlayback()
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            if let session = self?.captureSession, !session.isRunning {
+                session.startRunning()
+            }
+        }
+    }
+    
+    public func stopCaptureSession() {
+        if let session = captureSession, session.isRunning {
+            session.stopRunning()
+        }
+    }
+    
     private func configureCaptureSession() {
         
         // Start off iwth photo session
@@ -141,7 +157,7 @@ extension SwiftCameraKit {
             currentCamera = backCamera
             
             guard let currentCamera = currentCamera else {
-                // callErrorView()
+                state = .error(.configureCaptureSessionFailed)
                 return
             }
             
@@ -150,7 +166,7 @@ extension SwiftCameraKit {
                 captureSession?.addInput(input)
             }
         } catch {
-            // callErrorView()
+            state = .error(.configureCaptureSessionFailed)
             return
         }
         
