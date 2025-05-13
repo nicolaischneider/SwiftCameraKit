@@ -25,8 +25,10 @@ extension SwiftCameraKit {
         let settings = AVCapturePhotoSettings()
         
         // Configure photo settings for best quality
-        settings.isHighResolutionPhotoEnabled = true
-        settings.photoQualityPrioritization = .quality
+        if configs.photoSetting.highQualityPhotos {
+            settings.isHighResolutionPhotoEnabled = true
+            settings.photoQualityPrioritization = .quality
+        }
         
         if flashMode == .on {
             settings.flashMode = .on

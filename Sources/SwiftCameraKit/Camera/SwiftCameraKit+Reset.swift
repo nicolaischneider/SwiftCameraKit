@@ -73,7 +73,7 @@ extension SwiftCameraKit {
     private func invalidateTimers() {
         recordingTimer?.invalidate()
         recordingTimer = nil
-        recordingDuration = 0
+        currentRecordingDuration = 0
     }
 
     // Clean up video player resources

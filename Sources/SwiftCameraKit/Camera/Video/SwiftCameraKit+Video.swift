@@ -144,16 +144,16 @@ extension SwiftCameraKit {
     
     private func startRecordingTimer() {
         // Reset recording time
-        recordingDuration = 0
+        currentRecordingDuration = 0
         
         // Start a timer that fires every second
         recordingTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             
-            self.recordingDuration += 1
+            self.currentRecordingDuration += 1
             
             // Optional: Implement a maximum recording duration (e.g., 30 seconds)
-            if self.recordingDuration >= self.maxRecordingDuration {
+            if self.currentRecordingDuration >= self.configs.videoSettings.maxVideoRecordingDuration {
                 self.stopVideoRecording()
             }
         }

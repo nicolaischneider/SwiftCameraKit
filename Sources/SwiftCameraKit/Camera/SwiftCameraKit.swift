@@ -52,8 +52,7 @@ public class SwiftCameraKit: NSObject {
     // For video recording
     var movieFileOutput: AVCaptureMovieFileOutput?
     var recordingTimer: Timer?
-    var recordingDuration: Int = 0
-    var maxRecordingDuration: Int = 30 // Max video length in seconds
+    var currentRecordingDuration: Int = 0
     var videoPlayer: AVPlayer?
     var frontFlashOverlay: UIView? // white brightr screen for flash during video recording using front camera
 
@@ -76,17 +75,5 @@ public class SwiftCameraKit: NSObject {
     
     deinit {
         reset()
-    }
-    
-    private func subscribeToObserver() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(pauseVideo),
-            name: UIApplication.didEnterBackgroundNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(restartVideo),
-            name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 }

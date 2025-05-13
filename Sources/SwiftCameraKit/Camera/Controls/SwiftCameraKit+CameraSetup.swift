@@ -118,9 +118,9 @@ extension SwiftCameraKit {
     
     private func configureCaptureSession() {
         
-        // Start off iwth photo session
+        // Start off with photo session
         captureSession = AVCaptureSession()
-        captureSession?.sessionPreset = .photo
+        captureSession?.sessionPreset = configs.photoSetting.photoSessionPreset
         captureSession?.beginConfiguration()
         
         // Support all common iOS device cameras
@@ -190,8 +190,10 @@ extension SwiftCameraKit {
         // Configure photo output
         photoOutput = AVCapturePhotoOutput()
         if let photoOutput = photoOutput {
-            photoOutput.isHighResolutionCaptureEnabled = true
-            photoOutput.maxPhotoQualityPrioritization = .quality
+            if configs.photoSetting.highQualityPhotos {
+                photoOutput.isHighResolutionCaptureEnabled = true
+                photoOutput.maxPhotoQualityPrioritization = .quality
+            }
             
             if captureSession?.canAddOutput(photoOutput) == true {
                 captureSession?.addOutput(photoOutput)
@@ -281,7 +283,7 @@ extension SwiftCameraKit {
         }
         
         cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        cameraPreviewLayer?.videoGravity = .resizeAspectFill
+        cameraPreviewLayer?.videoGravity = configs.videoSettings.videoGravity
         cameraPreviewLayer?.frame = view.layer.bounds
             
         guard let cameraPreviewLayer else {

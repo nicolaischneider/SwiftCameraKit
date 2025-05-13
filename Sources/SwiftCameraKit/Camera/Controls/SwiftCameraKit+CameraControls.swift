@@ -33,10 +33,10 @@ extension SwiftCameraKit {
         // Update session preset based on mode
         switch mediaMode {
         case .photo:
-            captureSession?.sessionPreset = .photo
+            captureSession?.sessionPreset = configs.photoSetting.photoSessionPreset
 
         case .video:
-            captureSession?.sessionPreset = .high // For video recording
+            captureSession?.sessionPreset = configs.videoSettings.videoSessionPreset
         }
         
         captureSession?.commitConfiguration()

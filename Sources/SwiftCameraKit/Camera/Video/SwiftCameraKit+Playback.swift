@@ -11,7 +11,7 @@ extension SwiftCameraKit {
         // Create AVPlayerLayer
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = playerView.bounds
-        playerLayer.videoGravity = .resizeAspectFill
+        playerLayer.videoGravity = configs.videoSettings.videoGravity
         
         // Remove any existing player layers
         playerView.layer.sublayers?.forEach { layer in
