@@ -1,3 +1,12 @@
+<p align="center">
+    <img src="swiftcamerakit.png" width="1000" alt="SwiftCameraKit"/>
+</p>
+
+![Swift](https://img.shields.io/badge/Swift-5.5-orange) 
+![iOS](https://img.shields.io/badge/iOS-v15%2B-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+
 # SwiftCameraKit
 
 A lightweight, easy-to-use camera library for SwiftUI and UIKit applications that handle photo or video capture (or both) with a clean API.
